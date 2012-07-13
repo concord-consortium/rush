@@ -33,7 +33,7 @@ describe Rush::Box do
 
 	it "executes bash commands in the background, returning a Rush::Process" do
 		@box.connection.should_receive(:bash).with('cmd', nil, true, false).and_return(123)
-		@box.stub!(:processes).and_return([ mock('ps', :pid => 123) ])
+		@box.stub!(:processes).and_return([ mock('ps', :pid => 123) ].extend Rush::FindBy)
 		@box.bash('cmd', :background => true).pid.should == 123
 	end
 

@@ -10,6 +10,8 @@ class Rush::ProcessSet
 
 	def initialize(processes)
 		@processes = processes
+		# add the array methods to this specific process array
+		@processes.extend Rush::FindBy
 	end
 
 	# Filter by any field that the process responds to.  Specify an exact value,
